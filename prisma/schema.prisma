@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductType {
+  WEBSITE
+  SAAS_APPLICATION
+  APPLICATION
+  THREE_D_WEBSITE
+  AUTOMATION
+  AI_AGENT_APP
+}
+
+enum YesNo {
+  YES
+  NO
+}
+
+enum BrandAssetsStatus {
+  HAVE_ALL
+  PARTIAL
+  NEED_ALL
+  PENDING_FROM_OTHER_PARTY
+}
+
+enum SubmissionStatus {
+  NEW
+  CONTACTED
+  IN_DISCUSSION
+  PROPOSAL_SENT
+  WON
+  LOST
+  ARCHIVED
+}
+
+model Submission {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Contact info
+  fullName    String
+  email       String
+  phone       String
+  companyName String
+
+  // a) product type
+  productType ProductType
+
+  // b) company type / what the company does
+  companyDescription String @db.Text
+
+  // c) admin panel
+  wantsAdminPanel YesNo
+
+  // d) brand assets
+  brandAssetsStatus BrandAssetsStatus
+
+  // e) reference website/app
+  hasReference  YesNo
+  referenceLink String?
+
+  // f) domain
+  hasDomain  YesNo
+  domainName String?
+
+  // extra questions
+  budgetRange String?
+  timeline    String?
+
+  // admin management
+  status        SubmissionStatus @default(NEW)
+  adminComment  String?          @db.Text
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  email        String   @unique
+  passwordHash String
+  name         String?
+}
