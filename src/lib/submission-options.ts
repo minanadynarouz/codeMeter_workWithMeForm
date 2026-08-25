@@ -9,8 +9,8 @@ export const PRODUCT_TYPE_OPTIONS = [
 
 export const BRAND_ASSETS_OPTIONS = [
   { value: "HAVE_ALL", label: "Yes, we have a logo, design system, and theme" },
-  { value: "PARTIAL", label: "We have some of it, and would like CodeMeter's help" },
-  { value: "NEED_ALL", label: "We need CodeMeter to create all of it" },
+  { value: "PARTIAL", label: "We have some of it, and would like Mina's help" },
+  { value: "NEED_ALL", label: "We need Mina to create all of it" },
   {
     value: "PENDING_FROM_OTHER_PARTY",
     label: "Not yet — we're getting it from another party and will share it with you",

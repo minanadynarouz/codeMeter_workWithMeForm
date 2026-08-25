@@ -37,18 +37,18 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-6">
-      <div className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-6 dark:bg-slate-950">
+      <div className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="text-center">
           <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
-            CM
+            MB
           </span>
-          <h1 className="mt-4 text-xl font-semibold text-slate-900">Admin sign in</h1>
-          <p className="mt-1 text-sm text-slate-500">CodeMeter internal dashboard</p>
+          <h1 className="mt-4 text-xl font-semibold text-slate-900 dark:text-white">Admin sign in</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Mina Bekheet — internal dashboard</p>
         </div>
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-800">
+            <label htmlFor="email" className="block text-sm font-medium text-slate-800 dark:text-slate-200">
               Email
             </label>
             <input
@@ -57,11 +57,11 @@ function LoginForm() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-indigo-900"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-slate-800">
+            <label htmlFor="password" className="block text-sm font-medium text-slate-800 dark:text-slate-200">
               Password
             </label>
             <input
@@ -70,10 +70,10 @@ function LoginForm() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-indigo-900"
             />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <button
             type="submit"
             disabled={submitting}

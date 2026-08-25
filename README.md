@@ -1,8 +1,9 @@
-# CodeMeter — Landing Page & Project Request Form
+# Mina Bekheet — Landing Page & Project Request Form
 
-A Next.js app for CodeMeter: a landing page (services + about) with a project
-request form, backed by a Postgres database, email notifications via Resend,
-and a password-protected admin dashboard to review and manage submissions.
+A Next.js app for Mina Bekheet's solo developer site: a landing page (services
++ about) with a project request form, backed by a Postgres database, email
+notifications via Resend, and a password-protected admin dashboard to review
+and manage submissions.
 
 ## Stack
 
@@ -32,7 +33,7 @@ and a password-protected admin dashboard to review and manage submissions.
    | `NEXTAUTH_SECRET` | Random secret — generate with `openssl rand -base64 32` |
    | `NEXTAUTH_URL` | Public URL of the app (`http://localhost:3000` locally) |
    | `RESEND_API_KEY` | API key from [resend.com](https://resend.com) |
-   | `RESEND_FROM_EMAIL` | Verified sending address, e.g. `CodeMeter <notifications@yourdomain.com>` |
+   | `RESEND_FROM_EMAIL` | Verified sending address, e.g. `Mina Bekheet <notifications@yourdomain.com>` |
    | `ADMIN_NOTIFICATION_EMAIL` | Where new-submission emails are sent |
 
    If `RESEND_API_KEY` / `RESEND_FROM_EMAIL` / `ADMIN_NOTIFICATION_EMAIL` are
