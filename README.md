@@ -62,24 +62,38 @@ and a password-protected admin dashboard to review and manage submissions.
 
 ## Deploying (Vercel)
 
-1. Create a Postgres database (Vercel Postgres, Neon, or Supabase all work)
-   and set `DATABASE_URL` in the Vercel project's environment variables.
-2. Set `NEXTAUTH_SECRET`, `NEXTAUTH_URL` (your production domain),
-   `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `ADMIN_NOTIFICATION_EMAIL`.
-3. Deploy. `npm install` runs `prisma generate` automatically via the
-   `postinstall` script.
-4. Apply the schema to the production database once:
+1. Import the GitHub repo at [vercel.com/new](https://vercel.com/new).
+2. In the project's **Environment Variables**, set (all Environments):
+   `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL` (your production
+   domain), `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `ADMIN_NOTIFICATION_EMAIL`,
+   and `SETUP_SECRET` (see below). Set these in the Vercel dashboard only —
+   never commit real values to the repo.
+3. In **Build & Development Settings**, override the Build Command to:
 
-   ```bash
-   DATABASE_URL="<production-url>" npx prisma migrate deploy
+   ```
+   npx prisma migrate deploy && next build
    ```
 
-5. Create the admin account on the production database:
+   This applies the committed migrations to the production database on
+   every deploy. (`npm install` already runs `prisma generate` via the
+   `postinstall` script.)
+4. Deploy.
+5. Create your admin login by calling the one-time setup endpoint once
+   (needs `SETUP_SECRET` to match what you set in step 2):
 
    ```bash
-   DATABASE_URL="<production-url>" SEED_ADMIN_EMAIL=you@example.com \
-     SEED_ADMIN_PASSWORD='choose-a-strong-password' npm run db:seed
+   curl -X POST https://<your-domain>/api/setup \
+     -H "Content-Type: application/json" \
+     -H "x-setup-secret: <SETUP_SECRET>" \
+     -d '{"email":"you@example.com","password":"choose-a-strong-password"}'
    ```
+
+   You can call it again later with the same secret to reset the password.
+   Remove `SETUP_SECRET` from the project's environment variables once you
+   no longer need it — the endpoint 404s when it's unset.
+
+For local development against a database this machine can reach directly,
+`npx prisma migrate dev` and `npm run db:seed` (see above) work as usual.
 
 ## Project structure
 
