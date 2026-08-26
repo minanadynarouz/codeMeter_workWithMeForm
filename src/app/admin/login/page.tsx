@@ -14,7 +14,7 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
