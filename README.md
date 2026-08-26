@@ -29,7 +29,8 @@ and manage submissions.
 
    | Variable | Description |
    | --- | --- |
-   | `DATABASE_URL` | Postgres connection string |
+   | `DATABASE_URL` | Postgres connection string used at runtime (pooled endpoint, if your provider has one) |
+   | `DIRECT_URL` | Direct, non-pooled connection string, used only by `prisma migrate`. On Neon: same as `DATABASE_URL` minus `-pooler` in the hostname — pooled connections can't run migrations |
    | `NEXTAUTH_SECRET` | Random secret — generate with `openssl rand -base64 32` |
    | `NEXTAUTH_URL` | Public URL of the app (`http://localhost:3000` locally) |
    | `RESEND_API_KEY` | API key from [resend.com](https://resend.com) |
@@ -65,10 +66,10 @@ and manage submissions.
 
 1. Import the GitHub repo at [vercel.com/new](https://vercel.com/new).
 2. In the project's **Environment Variables**, set (all Environments):
-   `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL` (your production
-   domain), `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `ADMIN_NOTIFICATION_EMAIL`,
-   and `SETUP_SECRET` (see below). Set these in the Vercel dashboard only —
-   never commit real values to the repo.
+   `DATABASE_URL`, `DIRECT_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL` (your
+   production domain), `RESEND_API_KEY`, `RESEND_FROM_EMAIL`,
+   `ADMIN_NOTIFICATION_EMAIL`, and `SETUP_SECRET` (see below). Set these in
+   the Vercel dashboard only — never commit real values to the repo.
 3. In **Build & Development Settings**, override the Build Command to:
 
    ```
