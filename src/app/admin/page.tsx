@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { AdminHeader } from "@/components/AdminHeader";
-import { StatusBadge } from "@/components/StatusBadge";
+import { StatusSelect } from "@/components/StatusSelect";
 import { productTypeLabel } from "@/lib/submission-options";
 
 export const dynamic = "force-dynamic";
@@ -53,7 +53,7 @@ export default async function AdminDashboardPage() {
                     </td>
                     <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{productTypeLabel(s.productType)}</td>
                     <td className="px-4 py-3">
-                      <StatusBadge status={s.status} />
+                      <StatusSelect id={s.id} status={s.status} />
                     </td>
                     <td className="px-4 py-3 text-slate-500 dark:text-slate-400">
                       {s.createdAt.toLocaleDateString(undefined, {
