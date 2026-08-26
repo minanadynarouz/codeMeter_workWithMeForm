@@ -58,7 +58,7 @@ export async function sendNewSubmissionEmail(submission: Submission) {
   await resend.emails.send({
     from,
     to,
-    subject: `New CodeMeter project request — ${submission.companyName}`,
+    subject: `New project request for Mina Bekheet — ${submission.companyName}`,
     html: `
       <div style="font-family:-apple-system,Segoe UI,sans-serif;max-width:600px;margin:0 auto;">
         <h2 style="color:#111827;">New project request</h2>

@@ -15,8 +15,8 @@ export const dynamic = "force-dynamic";
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</dt>
-      <dd className="mt-1 text-sm text-slate-900">{value}</dd>
+      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{label}</dt>
+      <dd className="mt-1 text-sm text-slate-900 dark:text-slate-100">{value}</dd>
     </div>
   );
 }
@@ -36,19 +36,19 @@ export default async function SubmissionDetailPage({
   const updateWithId = updateSubmission.bind(null, submission.id);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <AdminHeader />
       <main className="mx-auto max-w-4xl px-6 py-10">
-        <Link href="/admin" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+        <Link href="/admin" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
           ← Back to all requests
         </Link>
 
         <div className="mt-4 flex items-start justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-900">{submission.fullName}</h1>
-            <p className="text-sm text-slate-500">{submission.companyName}</p>
+            <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">{submission.fullName}</h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{submission.companyName}</p>
           </div>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Received{" "}
             {submission.createdAt.toLocaleString(undefined, {
               year: "numeric",
@@ -62,8 +62,8 @@ export default async function SubmissionDetailPage({
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-sm font-semibold text-slate-900">Contact information</h2>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Contact information</h2>
               <dl className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Field label="Full name" value={submission.fullName} />
                 <Field label="Company" value={submission.companyName} />
@@ -72,8 +72,8 @@ export default async function SubmissionDetailPage({
               </dl>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-sm font-semibold text-slate-900">Project details</h2>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Project details</h2>
               <dl className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Field label="Product type" value={productTypeLabel(submission.productType)} />
                 <Field
@@ -104,18 +104,18 @@ export default async function SubmissionDetailPage({
                 <Field label="Timeline" value={submission.timeline || "Not specified"} />
               </dl>
               <div className="mt-4">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   Company description
                 </dt>
-                <dd className="mt-1 whitespace-pre-wrap text-sm text-slate-900">
+                <dd className="mt-1 whitespace-pre-wrap text-sm text-slate-900 dark:text-slate-100">
                   {submission.companyDescription}
                 </dd>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-sm font-semibold text-slate-900">Manage request</h2>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Manage request</h2>
             <div className="mt-4">
               <EditSubmissionForm
                 key={submission.updatedAt.toISOString()}

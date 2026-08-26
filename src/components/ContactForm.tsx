@@ -16,7 +16,7 @@ type FieldName = keyof ContactFormValues;
 
 function ErrorText({ message }: { message?: string }) {
   if (!message) return null;
-  return <p className="mt-1 text-sm text-red-600">{message}</p>;
+  return <p className="mt-1 text-sm text-red-600 dark:text-red-400">{message}</p>;
 }
 
 function TextInput({
@@ -36,7 +36,7 @@ function TextInput({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-medium text-slate-800">
+      <label htmlFor={name} className="block text-sm font-medium text-slate-800 dark:text-slate-200">
         {label}
       </label>
       <input
@@ -44,7 +44,7 @@ function TextInput({
         type={type}
         placeholder={placeholder}
         {...register(name)}
-        className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+        className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
       />
       <ErrorText message={error} />
     </div>
@@ -72,7 +72,7 @@ function RadioCardGroup({
     columns === 3 ? "sm:grid-cols-3" : columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-1";
   return (
     <fieldset>
-      <legend className="block text-sm font-medium text-slate-800">{legend}</legend>
+      <legend className="block text-sm font-medium text-slate-800 dark:text-slate-200">{legend}</legend>
       <div className={`mt-1.5 grid grid-cols-1 gap-2 ${gridCols}`}>
         {options.map((opt) => {
           const checked = value === opt.value;
@@ -81,8 +81,8 @@ function RadioCardGroup({
               key={opt.value}
               className={`cursor-pointer rounded-lg border px-3.5 py-2.5 text-sm shadow-sm transition ${
                 checked
-                  ? "border-indigo-500 bg-indigo-50 text-indigo-900 ring-1 ring-indigo-500"
-                  : "border-slate-300 text-slate-700 hover:border-slate-400"
+                  ? "border-indigo-500 bg-indigo-50 text-indigo-900 ring-1 ring-indigo-500 dark:border-indigo-500 dark:bg-indigo-950 dark:text-indigo-200"
+                  : "border-slate-300 text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:border-slate-600"
               }`}
             >
               <input
@@ -149,10 +149,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
+      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center dark:border-emerald-900 dark:bg-emerald-950">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900">
           <svg
-            className="h-6 w-6 text-emerald-600"
+            className="h-6 w-6 text-emerald-600 dark:text-emerald-400"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
@@ -161,17 +161,17 @@ export function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-emerald-900">
+        <h3 className="mt-4 text-lg font-semibold text-emerald-900 dark:text-emerald-100">
           Thanks — your request has been received!
         </h3>
-        <p className="mx-auto mt-2 max-w-md text-sm text-emerald-800">
-          CodeMeter has received your project request. Our team will review it and get back to
+        <p className="mx-auto mt-2 max-w-md text-sm text-emerald-800 dark:text-emerald-300">
+          Your project request has been received. I&apos;ll personally review it and get back to
           you within 48 hours.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-emerald-300 bg-white px-4 py-2 text-sm font-medium text-emerald-800 transition hover:bg-emerald-50"
+          className="mt-6 rounded-full border border-emerald-300 bg-white px-4 py-2 text-sm font-medium text-emerald-800 transition hover:bg-emerald-50 dark:border-emerald-800 dark:bg-slate-900 dark:text-emerald-300 dark:hover:bg-emerald-950"
         >
           Submit another request
         </button>
@@ -205,7 +205,7 @@ export function ContactForm() {
       />
 
       <div>
-        <label htmlFor="companyDescription" className="block text-sm font-medium text-slate-800">
+        <label htmlFor="companyDescription" className="block text-sm font-medium text-slate-800 dark:text-slate-200">
           What is your company type, and what does it do?
         </label>
         <textarea
@@ -213,7 +213,7 @@ export function ContactForm() {
           rows={4}
           placeholder="Tell us about your business and what it does..."
           {...register("companyDescription")}
-          className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          className="mt-1.5 block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
         />
         <ErrorText message={errors.companyDescription?.message} />
       </div>
@@ -223,11 +223,11 @@ export function ContactForm() {
         name="wantsAdminPanel"
         render={({ field }) => (
           <RadioCardGroup
-            legend="Would you like an admin panel to manage your own content, or should CodeMeter manage it for you?"
+            legend="Would you like an admin panel to manage your own content, or should Mina manage it for you?"
             name="wantsAdminPanel"
             options={[
               { value: "YES", label: "Yes, I'd like an admin panel" },
-              { value: "NO", label: "No, CodeMeter can manage content" },
+              { value: "NO", label: "No, Mina can manage content for me" },
             ]}
             value={field.value}
             onChange={field.onChange}
@@ -279,7 +279,7 @@ export function ContactForm() {
           />
         )}
         {hasReference === "NO" && (
-          <p className="text-sm text-slate-500">No problem — we&apos;ll walk through style directions together on a call.</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">No problem — we&apos;ll walk through style directions together on a call.</p>
         )}
       </div>
 
@@ -312,14 +312,14 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="budgetRange" className="block text-sm font-medium text-slate-800">
-            Estimated budget <span className="font-normal text-slate-400">(optional)</span>
+          <label htmlFor="budgetRange" className="block text-sm font-medium text-slate-800 dark:text-slate-200">
+            Estimated budget <span className="font-normal text-slate-400 dark:text-slate-500">(optional)</span>
           </label>
           <select
             id="budgetRange"
             {...register("budgetRange")}
             defaultValue=""
-            className="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-indigo-900"
           >
             <option value="">Select a range...</option>
             {BUDGET_OPTIONS.map((opt) => (
@@ -330,14 +330,14 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="timeline" className="block text-sm font-medium text-slate-800">
-            Desired timeline <span className="font-normal text-slate-400">(optional)</span>
+          <label htmlFor="timeline" className="block text-sm font-medium text-slate-800 dark:text-slate-200">
+            Desired timeline <span className="font-normal text-slate-400 dark:text-slate-500">(optional)</span>
           </label>
           <select
             id="timeline"
             {...register("timeline")}
             defaultValue=""
-            className="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-indigo-900"
           >
             <option value="">Select a timeline...</option>
             {TIMELINE_OPTIONS.map((opt) => (
@@ -350,7 +350,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && serverError && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-400">
           {serverError}
         </div>
       )}
