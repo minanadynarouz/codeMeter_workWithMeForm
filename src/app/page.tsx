@@ -1,7 +1,9 @@
+"use client";
+
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactForm } from "@/components/ContactForm";
-import { HeroParticles } from "@/components/HeroParticles";
+import { Scene } from "@/components/Scene";
 
 const SERVICES = [
   {
@@ -22,7 +24,7 @@ const SERVICES = [
   },
   {
     title: "Automations",
-    description: "Business process automations built with n8n to save your team hours every week.",
+    description: "Business process automations built with n8n or Power Automate to save your team hours every week.",
   },
   {
     title: "AI agent apps",
@@ -41,13 +43,16 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className="flex-1">
+
         {/* Hero */}
+
         <section className="relative overflow-hidden bg-slate-950">
+          <Scene />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.35),transparent_50%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.25),transparent_45%)]"
           />
-          <HeroParticles />
+
           <div className="relative mx-auto max-w-6xl px-6 py-28 text-center sm:py-36">
             <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
               Mina Bekheet
