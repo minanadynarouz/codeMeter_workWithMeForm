@@ -33,11 +33,11 @@ export const STATUS_OPTIONS = [
 ] as const;
 
 export const BUDGET_OPTIONS = [
-  "Under $2,000",
-  "$2,000 – $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000+",
+  "Under EGP 25,000",
+  "EGP 25,000 – EGP 50,000",
+  "EGP 50,000 – EGP 150,000",
+  "EGP 150,000 – EGP 350,000",
+  "EGP 350,000+",
   "Not sure yet",
 ] as const;
 
