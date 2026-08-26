@@ -2,6 +2,7 @@
 
 import { signOut, useSession } from "next-auth/react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Logo } from "@/components/Logo";
 
 export function AdminHeader() {
   const { data: session } = useSession();
@@ -10,9 +11,7 @@ export function AdminHeader() {
     <header className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
-            MB
-          </span>
+          <Logo size={32} className="transition-transform group-hover:scale-105" />
           <span className="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
             Admin dashboard
           </span>

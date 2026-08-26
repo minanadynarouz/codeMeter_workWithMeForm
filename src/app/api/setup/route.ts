@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
     update: { passwordHash, name },
     create: { email: email.toLowerCase(), passwordHash, name },
   });
+  console.log("User created")
 
   return NextResponse.json({ ok: true, email: admin.email });
 }
