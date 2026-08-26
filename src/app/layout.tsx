@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Mina Bekheet — Websites, SaaS, Automations & AI Agents",
   description:
     "Mina Bekheet is a solo developer building websites, SaaS applications, custom apps, immersive 3D (Three.js) experiences, business automations with n8n, and AI agent apps.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 const THEME_INIT_SCRIPT = `
