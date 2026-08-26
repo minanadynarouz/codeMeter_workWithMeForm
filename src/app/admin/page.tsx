@@ -11,6 +11,9 @@ export default async function AdminDashboardPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  const showBudget = submissions.some((s) => s.budgetRange && s.budgetRange.trim() !== "");
+  const showTimeline = submissions.some((s) => s.timeline && s.timeline.trim() !== "");
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <AdminHeader />
@@ -34,6 +37,8 @@ export default async function AdminDashboardPage() {
                   <th className="px-4 py-3">Customer</th>
                   <th className="px-4 py-3">Contact</th>
                   <th className="px-4 py-3">Product type</th>
+                  {showBudget && <th className="px-4 py-3">Budget</th>}
+                  {showTimeline && <th className="px-4 py-3">Timeline</th>}
                   <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3">Received</th>
                 </tr>
@@ -52,6 +57,16 @@ export default async function AdminDashboardPage() {
                       <div className="text-xs text-slate-500 dark:text-slate-500">{s.phone}</div>
                     </td>
                     <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{productTypeLabel(s.productType)}</td>
+                    {showBudget && (
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                        {s.budgetRange || "—"}
+                      </td>
+                    )}
+                    {showTimeline && (
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                        {s.timeline || "—"}
+                      </td>
+                    )}
                     <td className="px-4 py-3">
                       <StatusBadge status={s.status} />
                     </td>
