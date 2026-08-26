@@ -368,7 +368,7 @@ export default function Home() {
                         About Mina Bekheet
                       </h2>
                       <p className="mt-6 text-base leading-relaxed text-slate-600 dark:text-slate-400">
-                        I&apos;m Mina Bekheet, a solo developer who designs and builds websites, SaaS
+                        I&apos;m Mina Nady Bekheet, a solo developer who designs and builds websites, SaaS
                         applications, custom apps, and business automations. I combine solid
                         engineering with a strong design sense — including immersive 3D experiences
                         built with Three.js — to help you launch a product that looks great and works
